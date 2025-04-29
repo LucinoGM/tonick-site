@@ -9,19 +9,49 @@
       color: #fff;
       text-align: center;
       padding-top: 50px;
-      background-image: url('https://wallpapercave.com/wp/wp7600677.jpg'); /* Imagem de fundo do anime */
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnQnc2hdb5UKICl_6LhDLVZQB3VXDJDZ8X2A&s');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
     }
     h1 {
       color: #FF0000;
       font-size: 48px;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      margin-top: 20px;
+    }
+
+    .social-links {
+      width: 40%;
+    }
+
+    .social-item {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+    }
+
+    .social-item img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
     .social-link {
-      margin-top: 30px;
       padding: 15px 30px;
       background-color: #FF0000;
       color: #fff;
@@ -31,42 +61,123 @@
       transition: 0.3s;
       display: inline-block;
     }
+
     .social-link:hover {
       background-color: #cc0000;
     }
-    .social-item {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 24px;
+
+    .game-container {
+      width: 50%;
+      height: 400px;
+      background-color: #333;
+      position: relative;
     }
-    .social-item img {
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
+
+    .player {
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      position: absolute;
+      bottom: 0;
+      left: 50px;
     }
+
+    .obstacle {
+      width: 30px;
+      height: 30px;
+      background-color: blue;
+      position: absolute;
+      bottom: 0;
+      right: -30px;
+      animation: moveObstacle 3s linear infinite;
+    }
+
+    @keyframes moveObstacle {
+      0% {
+        right: -30px;
+      }
+      100% {
+        right: 100%;
+      }
+    }
+
     .status {
-      color: #FF9800; /* Cor para "Em andamento" */
+      color: #FF9800;
     }
   </style>
 </head>
 <body>
+
   <h1>Minhas Redes Sociais - Tonick</h1>
   
-  <div class="social-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-    <a href="#" class="social-link">Instagram <span class="status">Em andamento</span></a>
+  <div class="content">
+    <!-- Redes Sociais -->
+    <div class="social-links">
+      <div class="social-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        <a href="#" class="social-link">Instagram <span class="status">Em andamento</span></a>
+      </div>
+
+      <div class="social-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+        <a href="#" class="social-link">Facebook <span class="status">Em andamento</span></a>
+      </div>
+
+      <div class="social-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
+        <a href="https://youtube.com/@tonick270?si=QZDmLIYG3ijMimCZ" class="social-link">YouTube</a>
+      </div>
+    </div>
+
+    <!-- Jogo de Pular Obstáculos -->
+    <div class="game-container">
+      <div class="player" id="player"></div>
+      <div class="obstacle"></div>
+    </div>
   </div>
 
-  <div class="social-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
-    <a href="#" class="social-link">Facebook <span class="status">Em andamento</span></a>
-  </div>
+  <script>
+    // Jogo simples de pular obstáculos
+    let player = document.getElementById('player');
+    let gameContainer = document.querySelector('.game-container');
+    let obstacle = document.querySelector('.obstacle');
+    let isJumping = false;
 
-  <div class="social-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
-    <a href="https://youtube.com/@tonick270?si=QZDmLIYG3ijMimCZ" class="social-link">YouTube</a>
-  </div>
+    // Função de pular
+    function jump() {
+      if (!isJumping) {
+        isJumping = true;
+        let jumpHeight = 150;
+        player.style.transition = 'all 0.3s ease-out';
+        player.style.bottom = `${jumpHeight}px`;
+
+        setTimeout(() => {
+          player.style.bottom = '0px';
+          isJumping = false;
+        }, 300);
+      }
+    }
+
+    // Detecção de tecla para pular
+    document.addEventListener('keydown', function(event) {
+      if (event.key === " ") {
+        jump();
+      }
+    });
+
+    // Colisão simples (detecção de obstáculos)
+    setInterval(() => {
+      let playerRect = player.getBoundingClientRect();
+      let obstacleRect = obstacle.getBoundingClientRect();
+
+      if (playerRect.top < obstacleRect.bottom &&
+          playerRect.left < obstacleRect.right &&
+          playerRect.right > obstacleRect.left &&
+          playerRect.bottom > obstacleRect.top) {
+        alert("Você perdeu! Colidiu com o obstáculo.");
+        location.reload();
+      }
+    }, 10);
+  </script>
 </body>
 </html>
