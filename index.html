@@ -1,147 +1,147 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Minhas Redes Sociais - Tonick</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Carro - Fliperama</title>
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
-
-    body {
-      margin: 0;
+    body, html {
+      width: 100%;
+      height: 100%;
       font-family: Arial, sans-serif;
+      background-color: #111;
       color: white;
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnQnc2hdb5UKICl_6LhDLVZQB3VXDJDZ8X2A&s');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
     }
-
-    h1 {
-      text-align: center;
-      font-size: 3em;
-      color: #ff4d4d;
-      margin-top: 30px;
-      text-shadow: 2px 2px 5px black;
+    #gameCanvas {
+      background: linear-gradient(#333, #111);
+      display: block;
+      margin: 0 auto;
+      border: 2px solid #fff;
     }
-
-    .container {
+    #menu {
       display: flex;
-      justify-content: space-around;
-      padding: 30px;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .socials {
-      width: 50%;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      border-radius: 20px;
-    }
-
-    .social-item {
-      margin: 20px 0;
-      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 15px;
+      justify-content: center;
+      height: 100vh;
     }
-
-    .social-item img {
-      width: 40px;
-      height: 40px;
-    }
-
-    .social-item a {
-      text-decoration: none;
-      background: #e74c3c;
+    #menu button {
+      margin-top: 20px;
       padding: 10px 20px;
-      border-radius: 10px;
-      color: white;
-      font-size: 1.2em;
-      transition: background 0.3s;
-    }
-
-    .social-item a:hover {
-      background: #c0392b;
-    }
-
-    .status {
-      font-size: 0.9em;
-      color: yellow;
-      margin-left: 10px;
-    }
-
-    .right-message {
-      width: 40%;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 20px;
-      text-align: center;
-    }
-
-    .right-message h2 {
-      font-size: 2em;
-      color: #00ffcc;
-    }
-
-    .right-message p {
-      font-size: 1.2em;
-      margin: 20px 0;
-    }
-
-    .highlight {
-      font-weight: bold;
-      color: #ffff66;
-    }
-
-    .right-message a {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #3498db;
-      color: white;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 1.2em;
-      transition: background 0.3s;
-      margin-top: 10px;
-    }
-
-    .right-message a:hover {
-      background-color: #2980b9;
+      font-size: 20px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-
-  <h1>Minhas Redes Sociais - Tonick</h1>
-
-  <div class="container">
-    <!-- Redes sociais no lado esquerdo -->
-    <div class="socials">
-      <div class="social-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" />
-        <a href="#" target="_blank">Instagram<span class="status"> (Em andamento)</span></a>
-      </div>
-      <div class="social-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" />
-        <a href="#" target="_blank">Facebook<span class="status"> (Em andamento)</span></a>
-      </div>
-      <div class="social-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" />
-        <a href="https://youtube.com/@tonick270?si=QZDmLIYG3ijMimCZ" target="_blank">Tonick - YouTube</a>
-      </div>
-    </div>
-
-    <!-- Mensagem e convite no lado direito -->
-    <div class="right-message">
-      <h2>💥 Você está preparado?</h2>
-      <p>Entre em nossa comunidade e ache o seu lugar. Aqui é a <strong>DayZ S Community</strong>, um espaço para conversar, jogar e sobreviver no mundo de DayZ.</p>
-      <p class="highlight">Entre Em Nossa Comunidade Clicando Em <span style="color: #00ffff;">"Entrar"</span></p>
-      <a href="https://discord.gg/JphgaeQCMp" target="_blank">Entrar</a>
-    </div>
+  <div id="menu">
+    <h1>Jogo de Carro Fliperama</h1>
+    <button onclick="startGame()">Começar</button>
   </div>
+  <canvas id="gameCanvas" width="400" height="600" style="display:none;"></canvas>
 
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let car, obstacles, keys, score, gameInterval, speed, maxSpeed;
+
+    function startGame() {
+      document.getElementById('menu').style.display = 'none';
+      canvas.style.display = 'block';
+      car = { x: 180, y: 500, width: 40, height: 60 };
+      obstacles = [];
+      keys = {};
+      score = 0;
+      speed = 2;
+      maxSpeed = 6;
+      for (let i = 0; i < 3; i++) addObstacle();
+      document.addEventListener('keydown', e => keys[e.key] = true);
+      document.addEventListener('keyup', e => keys[e.key] = false);
+      gameInterval = setInterval(updateGame, 20);
+    }
+
+    function addObstacle() {
+      obstacles.push({
+        x: Math.random() * 360,
+        y: -100 - Math.random() * 200,
+        width: 40,
+        height: 40,
+        effect: Math.random() < 0.3 ? (Math.random() < 0.5 ? 'slow' : 'slip') : 'none'
+      });
+    }
+
+    function updateGame() {
+      // Movimento do jogador
+      if (keys['ArrowLeft'] || keys['a']) car.x -= 4;
+      if (keys['ArrowRight'] || keys['d']) car.x += 4;
+      if (keys['ArrowUp'] || keys['w']) car.y -= 3;
+      if (keys['ArrowDown'] || keys['s']) car.y += 3;
+
+      // Limites
+      car.x = Math.max(0, Math.min(car.x, canvas.width - car.width));
+      car.y = Math.max(0, Math.min(car.y, canvas.height - car.height));
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Desenhar carro
+      ctx.fillStyle = 'lime';
+      ctx.fillRect(car.x, car.y, car.width, car.height);
+
+      // Obstáculos
+      for (let obs of obstacles) {
+        obs.y += speed;
+
+        ctx.fillStyle = obs.effect === 'slow' ? 'blue' : obs.effect === 'slip' ? 'yellow' : 'red';
+        ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+
+        // Colisão
+        if (
+          car.x < obs.x + obs.width &&
+          car.x + car.width > obs.x &&
+          car.y < obs.y + obs.height &&
+          car.y + car.height > obs.y
+        ) {
+          if (obs.effect === 'slow') speed = Math.max(1, speed - 1);
+          else if (obs.effect === 'slip') car.x += Math.random() < 0.5 ? -20 : 20;
+          else {
+            gameOver();
+            return;
+          }
+        }
+      }
+
+      // Pontuação e dificuldade
+      score++;
+      if (score % 500 === 0 && speed < maxSpeed) speed++;
+
+      // Resetar obstáculos
+      obstacles = obstacles.filter(o => o.y < canvas.height);
+      while (obstacles.length < 3 + Math.floor(score / 400)) addObstacle();
+
+      // Mostrar score
+      ctx.fillStyle = 'white';
+      ctx.font = '20px Arial';
+      ctx.fillText('Pontos: ' + score, 10, 30);
+    }
+
+    function gameOver() {
+      clearInterval(gameInterval);
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+      ctx.font = '30px Arial';
+      ctx.fillText('Game Over!', 120, 270);
+      ctx.font = '20px Arial';
+      ctx.fillText('Pontos: ' + score, 150, 310);
+      ctx.fillText('Clique para jogar novamente', 90, 350);
+      canvas.onclick = () => location.reload();
+    }
+  </script>
 </body>
 </html>
