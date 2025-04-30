@@ -12,17 +12,17 @@
       margin: 0;
       font-family: Arial, sans-serif;
       color: white;
-      background-image: url('https://wallpapercave.com/wp/wp5128415.jpg');
+      background-image: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      padding-top: 80px; /* Espaçamento para descer a página um pouco */
     }
 
     h1 {
       text-align: center;
       font-size: 3em;
       color: #ff4d4d;
+      margin-top: 50px;
       text-shadow: 2px 2px 5px black;
     }
 
@@ -138,40 +138,6 @@
       border-radius: 8px;
       font-size: 1em;
     }
-
-    /* Estilo para o widget de vídeos recentes */
-    .video-widget {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      width: 300px;
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 10px;
-      padding: 15px;
-      z-index: 1000;
-    }
-
-    .video-widget h3 {
-      color: #00ffff;
-      font-size: 1.5em;
-      margin-bottom: 15px;
-    }
-
-    .video-list {
-      max-height: 300px;
-      overflow-y: auto;
-      margin-bottom: 10px;
-    }
-
-    .video-item {
-      margin-bottom: 10px;
-    }
-
-    .video-item iframe {
-      width: 100%;
-      height: 150px;
-    }
-
   </style>
 </head>
 <body>
@@ -216,12 +182,6 @@
 
   <div class="footer">
     <p id="footerText">Atenciosamente, @lucino1</p>
-  </div>
-
-  <!-- Widget de vídeos recentes do YouTube -->
-  <div class="video-widget">
-    <h3>Vídeos Recentes</h3>
-    <div class="video-list" id="videoList"></div>
   </div>
 
   <script>
@@ -286,37 +246,6 @@
       document.getElementById("joinBtn").innerText = t.joinBtn;
       document.getElementById("footerText").innerText = t.footerText;
     });
-
-    // Função para carregar vídeos recentes do YouTube
-    async function loadRecentVideos() {
-      const apiKey = 'YOUR_YOUTUBE_API_KEY';
-      const channelId = 'YOUR_CHANNEL_ID';
-      const maxResults = 5;
-
-      const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=${maxResults}`;
-      const response = await fetch(url);
-      const data = await response.json();
-
-      const videoList = document.getElementById('videoList');
-      videoList.innerHTML = '';
-
-      data.items.forEach(item => {
-        const videoId = item.id.videoId;
-        const title = item.snippet.title;
-        const thumbnail = item.snippet.thumbnails.medium.url;
-
-        const videoItem = document.createElement('div');
-        videoItem.classList.add('video-item');
-        videoItem.innerHTML = `
-          <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <p>${title}</p>
-        `;
-
-        videoList.appendChild(videoItem);
-      });
-    }
-
-    loadRecentVideos(); // Carregar vídeos ao carregar a página
   </script>
 
 </body>
