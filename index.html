@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Minhas Redes Sociais - Tonick - Teste</title>
+  <title>Minhas Redes Sociais - Tonick</title>
   <style>
     * {
       box-sizing: border-box;
@@ -34,11 +34,80 @@
       flex-wrap: wrap;
     }
 
+    .socials {
+      width: 30%;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .social-item {
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .social-item img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .social-item a {
+      text-decoration: none;
+      background: #e74c3c;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: white;
+      font-size: 1.2em;
+      transition: background 0.3s;
+    }
+
+    .social-item a:hover {
+      background: #c0392b;
+    }
+
+    .status {
+      font-size: 0.9em;
+      color: yellow;
+      margin-left: 10px;
+    }
+
+    .action-section {
+      width: 60%;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .action-section h2 {
+      margin-top: 0;
+      color: #00ffcc;
+    }
+
+    .action-section button {
+      background-color: #3498db;
+      padding: 15px 30px;
+      border-radius: 10px;
+      color: white;
+      font-size: 1.2em;
+      border: none;
+      cursor: pointer;
+    }
+
+    .action-section button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Anúncios de vídeo */
     .ads {
       width: 60%;
       background-color: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 10px;
+      margin-top: 20px;
+      display: none; /* Inicialmente oculto */
     }
 
     .ads h2 {
@@ -65,32 +134,62 @@
 </head>
 <body>
 
-  <h1>Teste - Minhas Redes Sociais - Tonick</h1>
+  <h1>Minhas Redes Sociais - Tonick</h1>
 
   <div class="container">
-    <!-- Seção de anúncios com vídeos -->
-    <div class="ads">
-      <h2>Anúncios em Vídeo</h2>
-      <div class="ad-block">
-        📢 Assista a este vídeo promocional sobre nosso conteúdo exclusivo!
-        <div class="ad-video">
-          <video width="320" height="240" controls>
-            <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
-            Seu navegador não suporta o elemento de vídeo.
-          </video>
-        </div>
+    <!-- Redes sociais -->
+    <div class="socials">
+      <div class="social-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" />
+        <a href="#" target="_blank">Instagram<span class="status"> (Em andamento) 🛠️</span></a>
       </div>
-      <div class="ad-block">
-        🚀 Novidades toda semana! Fique ligado no nosso conteúdo.
-        <div class="ad-video">
-          <video width="320" height="240" controls>
-            <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
-            Seu navegador não suporta o elemento de vídeo.
-          </video>
-        </div>
+      <div class="social-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" />
+        <a href="#" target="_blank">Facebook<span class="status"> (Em andamento) 🛠️</span></a>
+      </div>
+      <div class="social-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" />
+        <a href="https://youtube.com/@tonick270?si=QZDmLIYG3ijMimCZ" target="_blank">Tonick - YouTube ✅</a>
+      </div>
+    </div>
+
+    <!-- Seção de ação -->
+    <div class="action-section">
+      <h2>Vamos Aprender?</h2>
+      <button onclick="showAds()">Teste</button>
+    </div>
+  </div>
+
+  <!-- Anúncios (ocultos inicialmente) -->
+  <div class="ads" id="ads-section">
+    <h2>Anúncios em Vídeo</h2>
+    <div class="ad-block">
+      📢 Assista a este vídeo promocional sobre nosso conteúdo exclusivo!
+      <div class="ad-video">
+        <video width="320" height="240" controls>
+          <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+          Seu navegador não suporta o elemento de vídeo.
+        </video>
+      </div>
+    </div>
+    <div class="ad-block">
+      🚀 Novidades toda semana! Fique ligado no nosso conteúdo.
+      <div class="ad-video">
+        <video width="320" height="240" controls>
+          <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+          Seu navegador não suporta o elemento de vídeo.
+        </video>
       </div>
     </div>
   </div>
+
+  <script>
+    // Função para exibir a seção de anúncios
+    function showAds() {
+      document.querySelector('.ads').style.display = 'block';  // Exibe os anúncios
+      document.querySelector('.action-section').style.display = 'none'; // Oculta o botão
+    }
+  </script>
 
 </body>
 </html>
