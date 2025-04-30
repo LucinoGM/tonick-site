@@ -12,7 +12,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
       color: white;
-      background-image: url('https://images.unsplash.com/photo-1608534509474-7792e96d5e5b?auto=format&fit=crop&w=1920&q=80');
+      background-image: url('https://wallpapercave.com/wp/wp5128415.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -26,6 +26,21 @@
       text-shadow: 2px 2px 5px black;
     }
 
+    .language-selector {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: rgba(0,0,0,0.5);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .language-selector select {
+      padding: 5px;
+      font-size: 1em;
+      border-radius: 5px;
+    }
+
     .container {
       display: flex;
       justify-content: space-around;
@@ -35,14 +50,13 @@
     }
 
     .socials {
-      width: 50%;
+      width: 45%;
       background: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 20px;
     }
 
     .social-title {
-      text-align: center;
       font-size: 1.5em;
       margin-bottom: 20px;
     }
@@ -65,7 +79,7 @@
       padding: 10px 20px;
       border-radius: 10px;
       color: white;
-      font-size: 1.2em;
+      font-size: 1.1em;
       transition: background 0.3s;
     }
 
@@ -75,14 +89,13 @@
 
     .status {
       font-size: 1em;
-      font-weight: bold;
       color: yellow;
       margin-left: 10px;
     }
 
     .right-message {
-      width: 40%;
-      background: rgba(0, 0, 0, 0.7);
+      width: 45%;
+      background: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 20px;
       text-align: center;
@@ -105,7 +118,7 @@
 
     .right-message a {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 10px 25px;
       background-color: #3498db;
       color: white;
       border-radius: 10px;
@@ -121,123 +134,116 @@
 
     .footer {
       text-align: center;
+      margin-top: 40px;
       font-size: 0.8em;
-      color: #ccc;
-      margin: 30px 0 10px;
-    }
-
-    .language-selector {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
-
-    .language-selector select {
-      padding: 5px;
-      border-radius: 5px;
-      font-size: 1em;
+      color: #cccccc;
     }
   </style>
 </head>
 <body>
 
   <div class="language-selector">
-    <select id="language">
+    <select onchange="changeLanguage(this.value)">
       <option value="pt">🇧🇷 Português</option>
       <option value="en">🇺🇸 English</option>
       <option value="jp">🇯🇵 日本語</option>
     </select>
   </div>
 
-  <h1 data-translate="title">Minhas Redes Sociais - Tonick</h1>
+  <h1 id="title">Minhas Redes Sociais - Tonick</h1>
 
   <div class="container">
     <!-- Redes sociais -->
     <div class="socials">
-      <div class="social-title" data-translate="social_title">Minhas Redes Sociais</div>
-
+      <div class="social-title" id="socialTitle">Minhas Redes Sociais</div>
       <div class="social-item">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" />
-        <a href="#" target="_blank">Instagram <span class="status" data-translate="in_progress">(Em andamento)</span></a>
+        <a href="#" target="_blank" id="instaLink">Instagram<span class="status" id="statusInsta"> (Em andamento)</span></a>
       </div>
-
       <div class="social-item">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" />
-        <a href="#" target="_blank">Facebook <span class="status" data-translate="in_progress">(Em andamento)</span></a>
+        <a href="#" target="_blank" id="facebookLink">Facebook<span class="status" id="statusFace"> (Em andamento)</span></a>
       </div>
-
       <div class="social-item">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" />
-        <a href="https://youtube.com/@tonick270?si=QZDmLIYG3ijMimCZ" target="_blank" data-translate="youtube">YouTube - Tonick</a>
+        <a href="https://youtube.com/@tonick270?si=QZDmLIYG3ijMimCZ" target="_blank" id="ytLink">YouTube<span class="status" id="statusYT"> (Em andamento)</span></a>
       </div>
     </div>
 
-    <!-- Mensagem e botão -->
+    <!-- Mensagem -->
     <div class="right-message">
-      <h2 data-translate="prepared">💥 Você está preparado?</h2>
-      <p data-translate="community_intro">
-        Entre em nossa comunidade e ache o seu lugar. Aqui é a <strong>DayZ S Community</strong>, um espaço para conversar, jogar e sobreviver no mundo de DayZ.
-      </p>
-      <p class="highlight" data-translate="click_enter">Entre em nossa comunidade clicando em <span style="color: #00ffff;">"Entrar"</span></p>
-      <a href="https://discord.gg/JphgaeQCMp" target="_blank" data-translate="enter_btn">Entrar</a>
+      <h2 id="mainTitle">💥 Você está preparado?</h2>
+      <p id="desc">Entre em nossa comunidade e ache o seu lugar. Aqui é a <strong>DayZ S Community</strong>, um espaço para conversar, jogar e sobreviver no mundo de DayZ.</p>
+      <p class="highlight" id="cta">Entre Em Nossa Comunidade Clicando Em <span style="color: #00ffff;">"Entrar"</span></p>
+      <a href="https://discord.gg/JphgaeQCMp" target="_blank" id="enterBtn">Entrar</a>
     </div>
   </div>
 
-  <div class="footer" data-translate="footer">Atenciosamente, @lucino1</div>
+  <div class="footer" id="footerText">Atenciosamente, @lucino1</div>
 
   <script>
     const translations = {
       pt: {
         title: "Minhas Redes Sociais - Tonick",
-        social_title: "Minhas Redes Sociais",
-        in_progress: "(Em andamento)",
-        youtube: "YouTube - Tonick",
-        prepared: "💥 Você está preparado?",
-        community_intro: "Entre em nossa comunidade e ache o seu lugar. Aqui é a <strong>DayZ S Community</strong>, um espaço para conversar, jogar e sobreviver no mundo de DayZ.",
-        click_enter: 'Entre em nossa comunidade clicando em <span style="color: #00ffff;">"Entrar"</span>',
-        enter_btn: "Entrar",
-        footer: "Atenciosamente, @lucino1"
+        socialTitle: "Minhas Redes Sociais",
+        instaLink: "Instagram",
+        facebookLink: "Facebook",
+        ytLink: "YouTube",
+        statusInsta: " (Em andamento)",
+        statusFace: " (Em andamento)",
+        statusYT: " (Em andamento)",
+        mainTitle: "💥 Você está preparado?",
+        desc: "Entre em nossa comunidade e ache o seu lugar. Aqui é a <strong>DayZ S Community</strong>, um espaço para conversar, jogar e sobreviver no mundo de DayZ.",
+        cta: 'Entre Em Nossa Comunidade Clicando Em <span style="color: #00ffff;">"Entrar"</span>',
+        enterBtn: "Entrar",
+        footerText: "Atenciosamente, @lucino1"
       },
       en: {
-        title: "My Social Networks - Tonick",
-        social_title: "My Social Networks",
-        in_progress: "(In progress)",
-        youtube: "YouTube - Tonick",
-        prepared: "💥 Are you ready?",
-        community_intro: "Join our community and find your place. This is <strong>DayZ S Community</strong>, a space to chat, play and survive in the world of DayZ.",
-        click_enter: 'Join our community by clicking <span style="color: #00ffff;">"Join"</span>',
-        enter_btn: "Join",
-        footer: "Sincerely, @lucino1"
+        title: "My Social Media - Tonick",
+        socialTitle: "My Social Media",
+        instaLink: "Instagram",
+        facebookLink: "Facebook",
+        ytLink: "YouTube",
+        statusInsta: " (In progress)",
+        statusFace: " (In progress)",
+        statusYT: " (In progress)",
+        mainTitle: "💥 Are you ready?",
+        desc: "Join our community and find your place. This is the <strong>DayZ S Community</strong>, a space to chat, play, and survive in the world of DayZ.",
+        cta: 'Join Our Community by Clicking <span style="color: #00ffff;">"Enter"</span>',
+        enterBtn: "Enter",
+        footerText: "Sincerely, @lucino1"
       },
       jp: {
-        title: "私のソーシャルネットワーク - トニック",
-        social_title: "私のソーシャルネットワーク",
-        in_progress: "（進行中）",
-        youtube: "YouTube - トニック",
-        prepared: "💥 準備はできましたか？",
-        community_intro: "私たちのコミュニティに参加して、あなたの居場所を見つけましょう。ここは<strong>DayZ S Community</strong>です。チャット、ゲーム、生存の場です。",
-        click_enter: '「<span style="color: #00ffff;">参加</span>」をクリックしてコミュニティに参加してください',
-        enter_btn: "参加",
-        footer: "敬具、@lucino1"
+        title: "私のSNS - Tonick",
+        socialTitle: "私のSNS",
+        instaLink: "インスタグラム",
+        facebookLink: "フェイスブック",
+        ytLink: "ユーチューブ",
+        statusInsta: "（進行中）",
+        statusFace: "（進行中）",
+        statusYT: "（進行中）",
+        mainTitle: "💥 準備はできていますか？",
+        desc: "私たちのコミュニティに参加して、あなたの居場所を見つけましょう。ここは<strong>DayZ S Community</strong>、DayZの世界で会話し、プレイし、生き延びるための場所です。",
+        cta: '<span style="color: #00ffff;">「参加」</span>をクリックして私たちのコミュニティに参加してください',
+        enterBtn: "参加",
+        footerText: "敬具、@lucino1"
       }
     };
 
-    const langSelect = document.getElementById("language");
-
-    function updateLanguage(lang) {
-      document.querySelectorAll("[data-translate]").forEach((el) => {
-        const key = el.getAttribute("data-translate");
-        if (translations[lang] && translations[lang][key]) {
-          el.innerHTML = translations[lang][key];
-        }
-      });
+    function changeLanguage(lang) {
+      const t = translations[lang];
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("socialTitle").textContent = t.socialTitle;
+      document.getElementById("instaLink").innerHTML = t.instaLink + '<span class="status">' + t.statusInsta + '</span>';
+      document.getElementById("facebookLink").innerHTML = t.facebookLink + '<span class="status">' + t.statusFace + '</span>';
+      document.getElementById("ytLink").innerHTML = t.ytLink + '<span class="status">' + t.statusYT + '</span>';
+      document.getElementById("mainTitle").innerHTML = t.mainTitle;
+      document.getElementById("desc").innerHTML = t.desc;
+      document.getElementById("cta").innerHTML = t.cta;
+      document.getElementById("enterBtn").textContent = t.enterBtn;
+      document.getElementById("footerText").textContent = t.footerText;
     }
-
-    langSelect.addEventListener("change", (e) => {
-      updateLanguage(e.target.value);
-    });
-
-    updateLanguage("pt"); // idioma inicial
   </script>
+
 </body>
 </html>
