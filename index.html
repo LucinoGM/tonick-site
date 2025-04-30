@@ -230,8 +230,12 @@
     };
 
     const langSelect = document.getElementById('languageSelect');
+    const statuses = document.querySelectorAll('.status');
+
     langSelect.addEventListener('change', () => {
       const lang = langSelect.value;
+
+      // Atualizar os textos
       document.getElementById('title').innerHTML = translations[lang].title;
       document.getElementById('socialsTitle').innerHTML = translations[lang].socialsTitle;
       document.getElementById('instaLink').innerHTML = translations[lang].instaLink;
