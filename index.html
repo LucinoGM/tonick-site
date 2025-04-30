@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <title>Minhas Redes Sociais - Tonick</title>
@@ -12,7 +12,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
       color: white;
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnQnc2hdb5UKICl_6LhDLVZQB3VXDJDZ8X2A&s');
+      background-image: url('https://images.unsplash.com/photo-1608534509474-7792e96d5e5b?auto=format&fit=crop&w=1920&q=80');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -36,15 +36,15 @@
 
     .socials {
       width: 50%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 20px;
     }
 
-    .socials h3 {
-      margin-top: 0;
+    .social-title {
+      text-align: center;
       font-size: 1.5em;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .social-item {
@@ -74,14 +74,15 @@
     }
 
     .status {
-      font-size: 0.9em;
+      font-size: 1em;
+      font-weight: bold;
       color: yellow;
       margin-left: 10px;
     }
 
     .right-message {
       width: 40%;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
       padding: 20px;
       border-radius: 20px;
       text-align: center;
@@ -121,124 +122,122 @@
     .footer {
       text-align: center;
       font-size: 0.8em;
-      margin-top: 40px;
-      margin-bottom: 20px;
+      color: #ccc;
+      margin: 30px 0 10px;
     }
 
-    .lang-selector {
+    .language-selector {
       position: absolute;
       top: 10px;
-      right: 20px;
+      right: 10px;
     }
 
-    select {
+    .language-selector select {
       padding: 5px;
+      border-radius: 5px;
       font-size: 1em;
     }
   </style>
 </head>
 <body>
 
-  <div class="lang-selector">
-    <select id="language" onchange="changeLanguage()">
+  <div class="language-selector">
+    <select id="language">
       <option value="pt">🇧🇷 Português</option>
       <option value="en">🇺🇸 English</option>
       <option value="jp">🇯🇵 日本語</option>
     </select>
   </div>
 
-  <h1 id="title">Minhas Redes Sociais - Tonick</h1>
+  <h1 data-translate="title">Minhas Redes Sociais - Tonick</h1>
 
   <div class="container">
+    <!-- Redes sociais -->
     <div class="socials">
-      <h3 id="socialsTitle">Minhas Redes Sociais</h3>
+      <div class="social-title" data-translate="social_title">Minhas Redes Sociais</div>
+
       <div class="social-item">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" />
-        <a href="#" target="_blank" id="insta">Instagram</a><span class="status" id="statusInsta"> (Em andamento)</span>
+        <a href="#" target="_blank">Instagram <span class="status" data-translate="in_progress">(Em andamento)</span></a>
       </div>
+
       <div class="social-item">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" />
-        <a href="#" target="_blank" id="face">Facebook</a><span class="status" id="statusFace"> (Em andamento)</span>
+        <a href="#" target="_blank">Facebook <span class="status" data-translate="in_progress">(Em andamento)</span></a>
       </div>
+
       <div class="social-item">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" />
-        <a href="https://youtube.com/@tonick270?si=QZDmLIYG3ijMimCZ" target="_blank" id="yt">YouTube - Tonick</a>
+        <a href="https://youtube.com/@tonick270?si=QZDmLIYG3ijMimCZ" target="_blank" data-translate="youtube">YouTube - Tonick</a>
       </div>
     </div>
 
+    <!-- Mensagem e botão -->
     <div class="right-message">
-      <h2 id="headline">💥 Você está preparado?</h2>
-      <p id="desc">Entre em nossa comunidade e ache o seu lugar. Aqui é a DayZ S Community, um espaço para conversar, jogar e sobreviver no mundo de DayZ.</p>
-      <p class="highlight" id="call">Entre em nossa comunidade clicando em <span style="color: #00ffff;">"Entrar"</span></p>
-      <a href="https://discord.gg/JphgaeQCMp" target="_blank" id="enterBtn">Entrar</a>
+      <h2 data-translate="prepared">💥 Você está preparado?</h2>
+      <p data-translate="community_intro">
+        Entre em nossa comunidade e ache o seu lugar. Aqui é a <strong>DayZ S Community</strong>, um espaço para conversar, jogar e sobreviver no mundo de DayZ.
+      </p>
+      <p class="highlight" data-translate="click_enter">Entre em nossa comunidade clicando em <span style="color: #00ffff;">"Entrar"</span></p>
+      <a href="https://discord.gg/JphgaeQCMp" target="_blank" data-translate="enter_btn">Entrar</a>
     </div>
   </div>
 
-  <div class="footer" id="footer">
-    Atenciosamente, @lucino1
-  </div>
+  <div class="footer" data-translate="footer">Atenciosamente, @lucino1</div>
 
   <script>
     const translations = {
       pt: {
         title: "Minhas Redes Sociais - Tonick",
-        socialsTitle: "Minhas Redes Sociais",
-        insta: "Instagram",
-        face: "Facebook",
-        yt: "YouTube - Tonick",
-        status: " (Em andamento)",
-        headline: "💥 Você está preparado?",
-        desc: "Entre em nossa comunidade e ache o seu lugar. Aqui é a DayZ S Community, um espaço para conversar, jogar e sobreviver no mundo de DayZ.",
-        call: 'Entre em nossa comunidade clicando em <span style="color: #00ffff;">"Entrar"</span>',
-        enterBtn: "Entrar",
+        social_title: "Minhas Redes Sociais",
+        in_progress: "(Em andamento)",
+        youtube: "YouTube - Tonick",
+        prepared: "💥 Você está preparado?",
+        community_intro: "Entre em nossa comunidade e ache o seu lugar. Aqui é a <strong>DayZ S Community</strong>, um espaço para conversar, jogar e sobreviver no mundo de DayZ.",
+        click_enter: 'Entre em nossa comunidade clicando em <span style="color: #00ffff;">"Entrar"</span>',
+        enter_btn: "Entrar",
         footer: "Atenciosamente, @lucino1"
       },
       en: {
         title: "My Social Networks - Tonick",
-        socialsTitle: "My Social Networks",
-        insta: "Instagram",
-        face: "Facebook",
-        yt: "YouTube - Tonick",
-        status: " (In progress)",
-        headline: "💥 Are you ready?",
-        desc: "Join our community and find your place. This is DayZ S Community, a space to chat, play, and survive in the world of DayZ.",
-        call: 'Join our community by clicking <span style="color: #00ffff;">"Enter"</span>',
-        enterBtn: "Enter",
+        social_title: "My Social Networks",
+        in_progress: "(In progress)",
+        youtube: "YouTube - Tonick",
+        prepared: "💥 Are you ready?",
+        community_intro: "Join our community and find your place. This is <strong>DayZ S Community</strong>, a space to chat, play and survive in the world of DayZ.",
+        click_enter: 'Join our community by clicking <span style="color: #00ffff;">"Join"</span>',
+        enter_btn: "Join",
         footer: "Sincerely, @lucino1"
       },
       jp: {
-        title: "私のソーシャルネットワーク - Tonick",
-        socialsTitle: "私のソーシャルネットワーク",
-        insta: "インスタグラム",
-        face: "フェイスブック",
-        yt: "ユーチューブ - Tonick",
-        status: "（進行中）",
-        headline: "💥 準備はできていますか？",
-        desc: "私たちのコミュニティに参加して、自分の居場所を見つけましょう。ここは DayZ S Community です。チャット、ゲーム、DayZ の世界での生き残りを楽しめます。",
-        call: '「<span style="color: #00ffff;">Enter</span>」をクリックしてコミュニティに参加してください',
-        enterBtn: "参加する",
+        title: "私のソーシャルネットワーク - トニック",
+        social_title: "私のソーシャルネットワーク",
+        in_progress: "（進行中）",
+        youtube: "YouTube - トニック",
+        prepared: "💥 準備はできましたか？",
+        community_intro: "私たちのコミュニティに参加して、あなたの居場所を見つけましょう。ここは<strong>DayZ S Community</strong>です。チャット、ゲーム、生存の場です。",
+        click_enter: '「<span style="color: #00ffff;">参加</span>」をクリックしてコミュニティに参加してください',
+        enter_btn: "参加",
         footer: "敬具、@lucino1"
       }
     };
 
-    function changeLanguage() {
-      const lang = document.getElementById("language").value;
-      const t = translations[lang];
+    const langSelect = document.getElementById("language");
 
-      document.getElementById("title").textContent = t.title;
-      document.getElementById("socialsTitle").textContent = t.socialsTitle;
-      document.getElementById("insta").textContent = t.insta;
-      document.getElementById("statusInsta").textContent = t.status;
-      document.getElementById("face").textContent = t.face;
-      document.getElementById("statusFace").textContent = t.status;
-      document.getElementById("yt").textContent = t.yt;
-      document.getElementById("headline").textContent = t.headline;
-      document.getElementById("desc").textContent = t.desc;
-      document.getElementById("call").innerHTML = t.call;
-      document.getElementById("enterBtn").textContent = t.enterBtn;
-      document.getElementById("footer").textContent = t.footer;
+    function updateLanguage(lang) {
+      document.querySelectorAll("[data-translate]").forEach((el) => {
+        const key = el.getAttribute("data-translate");
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
     }
-  </script>
 
+    langSelect.addEventListener("change", (e) => {
+      updateLanguage(e.target.value);
+    });
+
+    updateLanguage("pt"); // idioma inicial
+  </script>
 </body>
 </html>
