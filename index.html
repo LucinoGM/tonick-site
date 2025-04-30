@@ -1,78 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Minhas Redes Sociais - Tonick</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #222;
       color: white;
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnQnc2hdb5UKICl_6LhDLVZQB3VXDJDZ8X2A&s');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
     h1 {
       text-align: center;
+      font-size: 3em;
       color: #ff4d4d;
+      margin-top: 30px;
       text-shadow: 2px 2px 5px black;
-      margin-top: 20px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      padding: 30px;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     .socials {
-      position: fixed;
-      top: 100px;
-      right: 20px;
-      width: 200px;
-      background-color: #333;
+      width: 30%;
+      background-color: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 10px;
     }
 
     .social-item {
+      margin: 20px 0;
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin: 15px 0;
+      gap: 15px;
     }
 
     .social-item img {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
     }
 
     .social-item a {
       text-decoration: none;
       background: #e74c3c;
-      padding: 8px 12px;
-      border-radius: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
       color: white;
-      font-size: 1em;
+      font-size: 1.2em;
       transition: background 0.3s;
     }
 
     .social-item a:hover {
       background: #c0392b;
     }
+
+    .status {
+      font-size: 0.9em;
+      color: yellow;
+      margin-left: 10px;
+    }
+
+    .ads {
+      width: 60%;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .ads h2 {
+      margin-top: 0;
+      color: #00ffcc;
+    }
+
+    .ad-block {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 15px;
+      color: white;
+    }
   </style>
 </head>
 <body>
 
-<h1>Minhas Redes Sociais - Tonick</h1>
+  <h1>Minhas Redes Sociais - Tonick</h1>
 
-<div class="socials">
-  <div class="social-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
-    <a href="#" target="_blank">Instagram</a>
+  <div class="container">
+    <!-- Redes sociais -->
+    <div class="socials">
+      <div class="social-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" />
+        <a href="#" target="_blank">Instagram<span class="status"> (Em andamento) 🛠️</span></a>
+      </div>
+      <div class="social-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" />
+        <a href="#" target="_blank">Facebook<span class="status"> (Em andamento) 🛠️</span></a>
+      </div>
+      <div class="social-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" />
+        <a href="https://youtube.com/@tonick270?si=QZDmLIYG3ijMimCZ" target="_blank">Tonick - YouTube ✅</a>
+      </div>
+    </div>
+
+    <!-- Área de anúncios -->
+    <div class="ads">
+      <h2>Anúncios</h2>
+      <div class="ad-block">
+        🔥 Promoção exclusiva! Acesse agora e ganhe descontos imperdíveis.
+      </div>
+      <div class="ad-block">
+        📢 Quer divulgar aqui? Entre em contato com @tonick!
+      </div>
+      <div class="ad-block">
+        🚀 Novidades toda semana. Fique ligado!
+      </div>
+    </div>
   </div>
-  <div class="social-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg">
-    <a href="#" target="_blank">Facebook</a>
-  </div>
-  <div class="social-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png">
-    <a href="https://youtube.com/@tonick270" target="_blank">YouTube</a>
-  </div>
-</div>
 
 </body>
 </html>
