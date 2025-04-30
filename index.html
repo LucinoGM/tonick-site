@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Minhas Redes Sociais - Tonick</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -19,75 +15,38 @@
       text-align: center;
       color: #ff4d4d;
       text-shadow: 2px 2px 5px black;
-      margin: 20px 0;
-    }
-
-    .container {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      padding: 20px;
-    }
-
-    .game-section {
-      width: 60%;
-    }
-
-    .maze {
-      display: grid;
-      grid-template-columns: repeat(10, 40px);
-      grid-template-rows: repeat(10, 40px);
-      gap: 2px;
-      background-color: #000;
-      margin: 0 auto;
-      border: 3px solid white;
-      border-radius: 10px;
-    }
-
-    .cell {
-      width: 40px;
-      height: 40px;
-    }
-
-    .wall {
-      background-color: #444;
-    }
-
-    .path {
-      background-color: #ddd;
-    }
-
-    .player {
-      background-color: red;
-    }
-
-    .exit {
-      background-color: limegreen;
+      margin-top: 20px;
     }
 
     .socials {
-      width: 30%;
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      width: 200px;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 10px;
     }
 
     .social-item {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin: 20px 0;
+      margin: 15px 0;
     }
 
     .social-item img {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
     }
 
     .social-item a {
       text-decoration: none;
       background: #e74c3c;
-      padding: 10px 20px;
-      border-radius: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
       color: white;
-      font-size: 1.2em;
+      font-size: 1em;
       transition: background 0.3s;
     }
 
@@ -98,99 +57,22 @@
 </head>
 <body>
 
-  <h1>Minhas Redes Sociais - Tonick</h1>
+<h1>Minhas Redes Sociais - Tonick</h1>
 
-  <div class="container">
-    <!-- Jogo do labirinto -->
-    <div class="game-section">
-      <div class="maze" id="maze"></div>
-    </div>
-
-    <!-- Redes sociais -->
-    <div class="socials">
-      <div class="social-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" />
-        <a href="#" target="_blank">Instagram</a>
-      </div>
-      <div class="social-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" />
-        <a href="#" target="_blank">Facebook</a>
-      </div>
-      <div class="social-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" />
-        <a href="https://youtube.com/@tonick270" target="_blank">Tonick - YouTube</a>
-      </div>
-    </div>
+<div class="socials">
+  <div class="social-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+    <a href="#" target="_blank">Instagram</a>
   </div>
-
-  <script>
-    const mazeLayout = [
-      "WWWWWWWWWW",
-      "W        W",
-      "W WWWWWW W",
-      "W W    W W",
-      "W W WW W W",
-      "W W WW W W",
-      "W W    W W",
-      "W WWWWWW W",
-      "W        E",
-      "WWWWWWWWWW"
-    ];
-
-    const maze = document.getElementById("maze");
-    const playerPos = { x: 1, y: 1 };
-    let cells = [];
-
-    function drawMaze() {
-      maze.innerHTML = "";
-      cells = [];
-      for (let y = 0; y < 10; y++) {
-        for (let x = 0; x < 10; x++) {
-          const cell = document.createElement("div");
-          cell.classList.add("cell");
-
-          if (mazeLayout[y][x] === "W") {
-            cell.classList.add("wall");
-          } else if (mazeLayout[y][x] === "E") {
-            cell.classList.add("exit");
-          } else {
-            cell.classList.add("path");
-          }
-
-          if (playerPos.x === x && playerPos.y === y) {
-            cell.classList.add("player");
-          }
-
-          maze.appendChild(cell);
-          cells.push(cell);
-        }
-      }
-    }
-
-    function movePlayer(dx, dy) {
-      const newX = playerPos.x + dx;
-      const newY = playerPos.y + dy;
-
-      if (mazeLayout[newY][newX] === "W") return;
-
-      playerPos.x = newX;
-      playerPos.y = newY;
-      drawMaze();
-
-      if (mazeLayout[newY][newX] === "E") {
-        setTimeout(() => alert("🎉 Você venceu o labirinto!"), 100);
-      }
-    }
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowUp") movePlayer(0, -1);
-      if (e.key === "ArrowDown") movePlayer(0, 1);
-      if (e.key === "ArrowLeft") movePlayer(-1, 0);
-      if (e.key === "ArrowRight") movePlayer(1, 0);
-    });
-
-    drawMaze();
-  </script>
+  <div class="social-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg">
+    <a href="#" target="_blank">Facebook</a>
+  </div>
+  <div class="social-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png">
+    <a href="https://youtube.com/@tonick270" target="_blank">YouTube</a>
+  </div>
+</div>
 
 </body>
 </html>
